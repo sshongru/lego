@@ -1,0 +1,36 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 50">
+  <defs>
+    <g id="stud">
+      <ellipse cy="1.2" rx="2.6" ry="2.4" fill="#901822"/>
+      <circle r="2.6" fill="#f44e58" stroke="#ff9ba2" stroke-width=".6"/>
+      <path d="M-1.5-.8Q0-2 1.5-.8" fill="none" stroke="#ffc1c5" stroke-width=".5"/>
+    </g>
+    <g id="brick-1x2">
+      <rect y="2" width="17" height="8" rx="1.2" fill="#901822"/>
+      <rect width="17" height="8" rx="1.2" fill="currentColor" stroke="#ff7c86" stroke-width=".6"/>
+      <path d="M2 1H15" stroke="#ffadb4" stroke-width=".6"/>
+      <use href="#stud" x="4" y="3.5"/>
+      <use href="#stud" x="13" y="3.5"/>
+    </g>
+    <g id="brick-1x1">
+      <rect y="2" width="8" height="8" rx="1.2" fill="#901822"/>
+      <rect width="8" height="8" rx="1.2" fill="currentColor" stroke="#ff7c86" stroke-width=".6"/>
+      <path d="M2 1H6" stroke="#ffadb4" stroke-width=".6"/>
+      <use href="#stud" x="4" y="3.5"/>
+    </g>
+    <g id="brick-1x4">
+      <rect y="2" width="8" height="35" rx="1.2" fill="#901822"/>
+      <rect width="8" height="35" rx="1.2" fill="currentColor" stroke="#ff7c86" stroke-width=".6"/>
+      <path d="M2 1H6" stroke="#ffadb4" stroke-width=".6"/>
+      <use href="#stud" x="4" y="3.5"/>
+      <use href="#stud" x="4" y="12.5"/>
+      <use href="#stud" x="4" y="21.5"/>
+      <use href="#stud" x="4" y="30.5"/>
+    </g>
+  </defs>
+  <use href="#brick-1x4" x="3" y="2" color="#cf1f2d"/>
+  <use href="#brick-1x1" x="3" y="38" color="#e52d3a"/>
+  <use href="#brick-1x2" x="12" y="2" color="#e52d3a"/>
+  <use href="#brick-1x2" x="12" y="20" color="#d9212d"/>
+  <use href="#brick-1x2" x="12" y="38" color="#d9212d"/>
+</svg>

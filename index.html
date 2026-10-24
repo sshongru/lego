@@ -1,0 +1,85 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#0055bf">
+  <meta name="description" content="A little collection for a big imagination. Explore E's LEGO sets and find the next great gift.">
+  <title>E's LEGO collection</title>
+  <link rel="icon" href="favicon.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="styles.css">
+  <script src="data/collection-data.js" defer></script>
+  <script src="collection.js" defer></script>
+  <script src="app.js" defer></script>
+</head>
+<body>
+  <a class="skip-link" href="#collection">Skip to collection</a>
+  <header class="site-header">
+    <a class="brand" href="index.html" aria-label="Lego Collection home"><span class="brick-logo" aria-hidden="true"><img src="favicon.svg" width="40" height="48" alt=""></span><span>Lego Collection</span></a>
+    <a class="source-link" id="source-link" href="https://docs.google.com/document/d/1iOm-WL2mod_ddafMe6jMYb0pIGvxAL3Q3hconsDV9oM/edit" target="_blank" rel="noopener noreferrer">The original list <span aria-hidden="true">&#8599;</span></a>
+  </header>
+
+  <main>
+    <section id="collection" class="collection-section" aria-label="LEGO collection">
+      <div class="filter-bar">
+        <div class="status-filters" role="group" aria-label="Filter by collection status">
+          <button class="filter active" data-status="owned" aria-pressed="true">Owned <span data-count="owned">0</span></button>
+          <button class="filter" data-status="wanted" aria-pressed="false">Explicitly desired <span data-count="wanted">0</span></button>
+          <button class="filter" data-status="suspected" aria-pressed="false">Suspected desired <span data-count="suspected">0</span></button>
+          <button class="filter" data-status="reserved" aria-pressed="false">Reserved <span data-count="reserved">0</span></button>
+        </div>
+        <div class="collection-tools">
+          <label class="search-box"><span aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><circle cx="10.7" cy="10.7" r="6.7"/><path d="m16 16 4 4"/></svg></span><input id="search" type="search" placeholder="Find a set or set number..." aria-label="Search by set name, number, theme, or notes"></label>
+          <label class="sort-label"><span>Sort by</span><select id="sort" aria-label="Sort sets"><option value="name">Name, A to Z</option><option value="number">Set number</option><option value="price-asc">Price, low to high</option><option value="price-desc">Price, high to low</option></select></label>
+        </div>
+      </div>
+      <p class="status-explanation" id="status-explanation" hidden></p>
+      <div class="set-grid" id="set-grid" aria-label="LEGO sets" aria-busy="true"></div>
+      <div class="empty-state" id="empty-state" hidden><span aria-hidden="true">&#8981;</span><h3>No bricks in this corner.</h3><p>Try another name, set number, or collection status.</p><button id="empty-reset">Clear search</button></div>
+      <div class="error-state" id="error-state" role="alert" hidden><h3>We couldn't load the collection.</h3><p id="error-message"></p><button id="retry">Try again</button></div>
+      <noscript><p class="error-state">Enable JavaScript to browse and filter the collection. You can also <a href="data/collection-data.js">open the collection data file</a>.</p></noscript>
+    </section>
+  </main>
+  <footer>
+    <a class="footer-brand" href="index.html" aria-label="Made for E. Built with bricks.">
+      <span>Made for E. Built with</span>
+      <svg class="footer-bricks" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 40 28" width="34" height="24" aria-hidden="true">
+        <g transform="translate(3 13) rotate(-10 9 5)">
+          <rect y="3" width="19" height="10" rx="1.5" fill="#981923"/>
+          <rect width="19" height="10" rx="1.5" fill="#d9212d"/>
+          <rect x="3" y="-3" width="5" height="4" rx="1" fill="#f14b56"/>
+          <rect x="11" y="-3" width="5" height="4" rx="1" fill="#f14b56"/>
+          <path d="M2 2H17" stroke="#ff8b92" stroke-width="1"/>
+        </g>
+        <g transform="translate(18 6) rotate(12 9 5)">
+          <rect y="3" width="19" height="10" rx="1.5" fill="#bd9400"/>
+          <rect width="19" height="10" rx="1.5" fill="#ffcf00"/>
+          <rect x="3" y="-3" width="5" height="4" rx="1" fill="#ffe66b"/>
+          <rect x="11" y="-3" width="5" height="4" rx="1" fill="#ffe66b"/>
+          <path d="M2 2H17" stroke="#fff3a1" stroke-width="1"/>
+        </g>
+      </svg>
+    </a>
+    <p>An independent family collection. Not affiliated with the LEGO Group.</p>
+    <span id="updated-at"></span>
+  </footer>
+  <template id="set-template">
+    <article class="set-card">
+      <div class="card-image"><span class="quantity-badge" hidden></span><a class="image-link" target="_blank" rel="noopener noreferrer" tabindex="-1" aria-hidden="true"><img loading="lazy" decoding="async" width="600" height="480" alt=""></a><span class="image-error" hidden>Image unavailable</span></div>
+      <div class="card-body">
+        <p class="set-meta"></p>
+        <h3><a class="set-title-link" target="_blank" rel="noopener noreferrer"></a></h3>
+        <div class="card-bottom">
+          <span class="set-price"></span>
+          <div class="retailer-links" role="group" aria-label="Find this set at a retailer">
+            <a class="retailer-link" data-retailer="lego" target="_blank" rel="noopener noreferrer">LEGO</a>
+            <a class="retailer-link" data-retailer="amazon" target="_blank" rel="noopener noreferrer">Amazon</a>
+            <a class="retailer-link" data-retailer="target" target="_blank" rel="noopener noreferrer">Target</a>
+          </div>
+        </div>
+        <div class="set-notes"><p></p></div>
+      </div>
+    </article>
+  </template>
+</body>
+</html>
