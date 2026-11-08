@@ -1,7 +1,7 @@
 globalThis.LEGO_COLLECTION = {
   "title": "E's LEGO collection",
   "sourceUrl": "https://docs.google.com/document/d/1iOm-WL2mod_ddafMe6jMYb0pIGvxAL3Q3hconsDV9oM/edit",
-  "updatedAt": "2026-10-23",
+  "updatedAt": "2026-11-08",
   "currency": "USD",
   "sets": [
     {"id":"42235","name":"Ferrari 488 Pista Car","theme":"Technic","status":"owned","notes":"Fifth birthday gift from Howard, Hannah, and Janet.","image":"images/42235.jpg","legoUrl":"https://www.lego.com/en-us/product/ferrari-488-pista-car-42235"},
@@ -55,6 +55,7 @@ globalThis.LEGO_COLLECTION = {
     {"id":"60409","name":"Yellow Mobile Construction Crane","theme":"City","status":"reserved","notes":"Already bought; E doesn't know about it yet. Source suggests saving it for surgery times.","image":"images/60409.jpg","legoUrl":"https://www.lego.com/en-us/product/yellow-mobile-construction-crane-60409"},
     {"id":"60386","name":"Recycling Truck","theme":"City","status":"reserved","notes":"Already bought; E doesn't know about it yet. Different from owned Recycling Truck 60495.","image":"images/60386.jpg","legoUrl":"https://www.lego.com/en-us/product/recycling-truck-60386"},
     {"id":"60466","name":"Yellow Bulldozer","theme":"City","status":"reserved","price":64.99,"notes":"Steve bought it on sale from Amazon. Already bought; E doesn't know about it yet.","image":"images/60466.jpg","legoUrl":"https://www.lego.com/en-us/product/yellow-bulldozer-60466"},
-    {"id":"60467","name":"Heavy-Duty Recovery Tow Truck with Crane","theme":"City","status":"reserved","price":89.99,"notes":"Gramma/Grampa bought it for Christmas 2026. Already bought; E doesn't know about it yet.","image":"images/60467.jpg","legoUrl":"https://www.lego.com/en-us/product/heavy-duty-recovery-tow-truck-with-crane-60467"}
+    {"id":"60467","name":"Heavy-Duty Recovery Tow Truck with Crane","theme":"City","status":"reserved","price":89.99,"notes":"Gramma/Grampa bought it for Christmas 2026. Already bought; E doesn't know about it yet.","image":"images/60467.jpg","legoUrl":"https://www.lego.com/en-us/product/heavy-duty-recovery-tow-truck-with-crane-60467"},
+    {"id":"60493","name":"F1 Display Truck with Audi F1 Race Car","theme":"City","status":"wanted","price":44.99,"notes":"On E's Christmas 2026 wish list. Steve saw it in store in November 2026; LEGO lists the set as retiring soon.","image":"images/60493.jpg","legoUrl":"https://www.lego.com/en-us/product/f1-display-truck-with-audi-f1-race-car-60493"}
   ]
 };
