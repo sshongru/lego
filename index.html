@@ -13,27 +13,100 @@
   <script src="app.js" defer></script>
 </head>
 <body>
+  <div class="snowfall" aria-hidden="true"></div>
   <a class="skip-link" href="#collection">Skip to collection</a>
   <header class="site-header">
     <a class="brand" href="index.html" aria-label="Lego Collection home"><span class="brick-logo" aria-hidden="true"><img src="favicon.svg" width="40" height="48" alt=""></span><span>Lego Collection</span></a>
-    <a class="source-link" id="source-link" href="https://docs.google.com/document/d/1iOm-WL2mod_ddafMe6jMYb0pIGvxAL3Q3hconsDV9oM/edit" target="_blank" rel="noopener noreferrer">The original list <span aria-hidden="true">&#8599;</span></a>
+      <div class="christmas-header" id="christmas-header" hidden>
+        <svg class="christmas-art" viewBox="0 0 300 190" width="300" height="190" aria-hidden="true">
+          <defs>
+            <linearGradient id="tree-top" x2="0" y2="1">
+              <stop stop-color="#72bd83"/><stop offset="1" stop-color="#429861"/>
+            </linearGradient>
+            <linearGradient id="tree-face" x2="1" y2="1">
+              <stop stop-color="#398555"/><stop offset="1" stop-color="#205337"/>
+            </linearGradient>
+            <g id="tree-stud">
+              <path d="M-7-2v4c0 4 14 4 14 0v-4" fill="#2a6742"/>
+              <ellipse cy="-2" rx="7" ry="3" fill="#88ce94"/>
+              <path d="M-5-3q5-2 10 0" fill="none" stroke="#c2e9bd" stroke-width="1"/>
+            </g>
+            <g id="tree-brick">
+              <path d="m0 0 40 16v18L0 18Z" fill="url(#tree-face)"/>
+              <path d="m40 16 80-16v18L40 34Z" fill="#184d32"/>
+              <path d="m0 0 80-16 40 16-80 16Z" fill="url(#tree-top)"/>
+              <path d="m2 0 38 15 77-15" fill="none" stroke="#b3dfac" stroke-width="1.5"/>
+              <path d="M40 18v14" stroke="#0f3523" stroke-width="1"/>
+              <use href="#tree-stud" x="24" y="0"/><use href="#tree-stud" x="48" y="-5"/><use href="#tree-stud" x="72" y="-10"/>
+              <use href="#tree-stud" x="48" y="8"/><use href="#tree-stud" x="72" y="3"/><use href="#tree-stud" x="96" y="-2"/>
+            </g>
+            <path id="brick-star" d="m0-14 5 9 11 2-8 8 2 11L0 11l-10 5 2-11-8-8 11-2Z"/>
+          </defs>
+          <ellipse cx="153" cy="172" rx="132" ry="13" fill="#082b22" opacity=".3"/>
+          <path d="m18 140 145-34 122 40v8l-145 34-122-40Z" fill="#94b6a9"/>
+          <path d="m140 180 145-34v8l-145 34Z" fill="#5b8c79"/>
+          <path d="m18 140 145-34 122 40-145 34Z" fill="#e9f4ef"/>
+          <path d="m24 140 116 38 138-32" fill="none" stroke="#fff" stroke-width="2"/>
+          <g fill="#c7dfd3">
+            <ellipse cx="42" cy="141" rx="7" ry="3"/><ellipse cx="65" cy="148" rx="7" ry="3"/>
+            <ellipse cx="91" cy="157" rx="7" ry="3"/><ellipse cx="116" cy="165" rx="7" ry="3"/>
+            <ellipse cx="153" cy="168" rx="7" ry="3"/><ellipse cx="177" cy="162" rx="7" ry="3"/>
+            <ellipse cx="250" cy="145" rx="7" ry="3"/><ellipse cx="263" cy="149" rx="7" ry="3"/>
+          </g>
+          <path d="m136 126 18-5 14 6v25l-18 5-14-6Z" fill="#764c32"/>
+          <path d="m150 132 18-5v25l-18 5Z" fill="#4b3024"/>
+          <use href="#tree-brick" transform="translate(80 112) scale(1.2 1)"/>
+          <use href="#tree-brick" transform="translate(94 90) scale(.98 1)"/>
+          <use href="#tree-brick" transform="translate(108 68) scale(.76 1)"/>
+          <use href="#tree-brick" transform="translate(122 46) scale(.54 1)"/>
+          <use href="#brick-star" x="157" y="22" fill="#b38422"/>
+          <use href="#brick-star" x="154" y="19" fill="#ffdb72"/>
+          <path d="m150 14 4-8 4 8" fill="none" stroke="#fff2b2" stroke-width="2"/>
+          <g fill="#d84450" stroke="#802632" stroke-width="1">
+            <ellipse cx="170" cy="63" rx="4" ry="5"/><ellipse cx="143" cy="83" rx="4" ry="5"/>
+            <ellipse cx="181" cy="105" rx="4" ry="5"/><ellipse cx="122" cy="134" rx="4" ry="5"/>
+          </g>
+          <g fill="#ffe095">
+            <ellipse cx="141" cy="61" rx="3" ry="4"/><ellipse cx="161" cy="102" rx="3" ry="4"/>
+            <ellipse cx="193" cy="127" rx="3" ry="4"/>
+          </g>
+          <g transform="translate(44 125)">
+            <path d="m0 0 30 10v26L0 26Z" fill="#c23c4d"/>
+            <path d="m30 10 40-10v26L30 36Z" fill="#842536"/>
+            <path d="m0 0 40-10 30 10-40 10Z" fill="#ef7180"/>
+            <path d="m11 4 8 3v26l-8-3Zm34 3 8-2v26l-8 2Z" fill="#f5cd68"/>
+            <path d="m11 4 40-10 8 3-40 10Z" fill="#ffe6a4"/>
+            <ellipse cx="26" cy="-5" rx="7" ry="3" fill="#ff9caa"/><ellipse cx="48" cy="2" rx="7" ry="3" fill="#ff9caa"/>
+            <path d="m2 1 27 9 38-9" stroke="#ffb3bc" stroke-width="1" fill="none"/>
+          </g>
+          <g transform="translate(211 119)">
+            <path d="m0 0 25 9v30L0 30Z" fill="#e6b949"/>
+            <path d="m25 9 31-9v30L25 39Z" fill="#a77a26"/>
+            <path d="m0 0 31-9 25 9-31 9Z" fill="#ffe291"/>
+            <path d="m9 3 7 3v30l-7-3Zm27 3 7-2v30l-7 2Z" fill="#a72d40"/>
+            <path d="m9 3 31-9 7 3-31 9Z" fill="#d65b6e"/>
+            <ellipse cx="21" cy="-4" rx="6" ry="3" fill="#fff0b8"/><ellipse cx="39" cy="2" rx="6" ry="3" fill="#fff0b8"/>
+          </g>
+        </svg>
+        <button class="snow-toggle" id="snow-toggle" type="button" aria-pressed="false">Pause snow</button>
+      </div>
   </header>
 
   <main>
     <section id="collection" class="collection-section" aria-label="LEGO collection">
       <div class="filter-bar">
-        <div class="status-filters" role="group" aria-label="Filter by collection status">
-          <button class="filter active" data-status="owned" aria-pressed="true">Owned <span data-count="owned">0</span></button>
-          <button class="filter" data-status="wanted" aria-pressed="false">Explicitly desired <span data-count="wanted">0</span></button>
-          <button class="filter" data-status="suspected" aria-pressed="false">Suspected desired <span data-count="suspected">0</span></button>
-          <button class="filter" data-status="reserved" aria-pressed="false">Reserved <span data-count="reserved">0</span></button>
+        <div class="status-filters" role="group" aria-label="Filter collection">
+          <button class="filter active" data-status="wishlist" aria-pressed="true"><span data-filter-label>Wishlist</span> <span data-count="wishlist">0</span></button>
+          <button class="filter" data-status="owned" aria-pressed="false"><span data-filter-label>Owned</span> <span data-count="owned">0</span></button>
+          <button class="filter" data-status="ideas" aria-pressed="false"><span data-filter-label>Ideas</span> <span data-count="ideas">0</span></button>
+          <button class="filter" data-status="reserved" aria-pressed="false"><span data-filter-label>Reserved</span> <span data-count="reserved">0</span></button>
         </div>
+        <p class="status-explanation" id="status-explanation" hidden></p>
         <div class="collection-tools">
-          <label class="search-box"><span aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><circle cx="10.7" cy="10.7" r="6.7"/><path d="m16 16 4 4"/></svg></span><input id="search" type="search" placeholder="Find a set or set number..." aria-label="Search by set name, number, theme, or notes"></label>
+          <label class="search-box"><span aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><circle cx="10.7" cy="10.7" r="6.7"/><path d="m16 16 4 4"/></svg></span><input id="search" type="search" placeholder="Search sets..." aria-label="Search by set name, number, theme, or notes"></label>
           <label class="sort-label"><span>Sort by</span><select id="sort" aria-label="Sort sets"><option value="name">Name, A to Z</option><option value="number">Set number</option><option value="price-asc">Price, low to high</option><option value="price-desc">Price, high to low</option></select></label>
         </div>
       </div>
-      <p class="status-explanation" id="status-explanation" hidden></p>
       <div class="set-grid" id="set-grid" aria-label="LEGO sets" aria-busy="true"></div>
       <div class="empty-state" id="empty-state" hidden><span aria-hidden="true">&#8981;</span><h3>No bricks in this corner.</h3><p>Try another name, set number, or collection status.</p><button id="empty-reset">Clear search</button></div>
       <div class="error-state" id="error-state" role="alert" hidden><h3>We couldn't load the collection.</h3><p id="error-message"></p><button id="retry">Try again</button></div>
@@ -65,6 +138,7 @@
   </footer>
   <template id="set-template">
     <article class="set-card">
+      <p class="wishlist-gift" hidden></p>
       <div class="card-image"><span class="quantity-badge" hidden></span><a class="image-link" target="_blank" rel="noopener noreferrer" tabindex="-1" aria-hidden="true"><img loading="lazy" decoding="async" width="600" height="480" alt=""></a><span class="image-error" hidden>Image unavailable</span></div>
       <div class="card-body">
         <p class="set-meta"></p>
@@ -72,9 +146,8 @@
         <div class="card-bottom">
           <span class="set-price"></span>
           <div class="retailer-links" role="group" aria-label="Find this set at a retailer">
-            <a class="retailer-link" data-retailer="lego" target="_blank" rel="noopener noreferrer">LEGO</a>
-            <a class="retailer-link" data-retailer="amazon" target="_blank" rel="noopener noreferrer">Amazon</a>
-            <a class="retailer-link" data-retailer="target" target="_blank" rel="noopener noreferrer">Target</a>
+            <a class="retailer-link" data-retailer="amazon" aria-label="Amazon" target="_blank" rel="noopener noreferrer"><img src="images/amazon.svg" width="14" height="18" alt=""></a>
+            <a class="retailer-link" data-retailer="target" aria-label="Target" target="_blank" rel="noopener noreferrer"><img src="images/target.svg" width="14" height="14" alt=""></a>
           </div>
         </div>
         <div class="set-notes"><p></p></div>
