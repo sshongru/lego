@@ -12,9 +12,9 @@ const collectionFilters = getCollectionFilters(data);
 
 test("collection is valid and source entries are deduplicated by set number", () => {
   assert.equal(validateCollection(data), data);
-  assert.equal(data.sets.length, 53);
+  assert.equal(data.sets.length, 54);
   assert.deepEqual(Object.fromEntries(Object.keys(statuses).map(status => [status, selectSets(data.sets, { status }).length])), {
-    owned: 30, ideas: 16, reserved: 7,
+    owned: 30, ideas: 17, reserved: 7,
   });
   assert.equal(data.sets.find(set => set.id === "60450").quantity, 2);
   assert.equal(data.sets.find(set => set.id === "42235").name, "Ferrari 488 Pista Car");
@@ -53,7 +53,7 @@ test("the newer main F1 Display Truck entry remains an idea outside the curated 
   assert.equal(set.wishlistGift, undefined);
   assert.equal(selectSets(data.sets, { status: normalizeFilter("suspected"), query: "60493" })[0], set);
   assert.equal(selectSets(data.sets, { status: "wishlist", query: "60493" }).length, 0);
-  assert.equal(data.updatedAt, "2026-11-08");
+  assert.equal(data.updatedAt, "2026-11-13");
 });
 
 test("each set has a real, local product image", async () => {
@@ -283,7 +283,7 @@ test("wishlist configuration can be rebranded independently of its theme and mem
     const ids = selectSets(copy.sets, { status: "wishlist" }).map(set => set.id);
     assert.ok(ids.includes("60451"));
     assert.ok(!ids.includes("60498"));
-    assert.equal(selectSets(copy.sets, { status: "ideas" }).length, 16);
+    assert.equal(selectSets(copy.sets, { status: "ideas" }).length, 17);
   }
   for (const wishlist of [undefined, {}, { ...data.wishlist, label: "" }, { ...data.wishlist, description: 123 }, { ...data.wishlist, theme: "easter" }]) {
     assert.throws(() => validateCollection({ ...data, wishlist }), /wishlist configuration/);
