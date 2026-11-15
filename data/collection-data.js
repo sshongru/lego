@@ -62,7 +62,8 @@ globalThis.LEGO_COLLECTION = {
     {"id":"60466","pieces":682,"name":"Yellow Bulldozer","theme":"City","status":"reserved","price":64.99,"notes":"Steve bought it on sale from Amazon. Already bought; E doesn't know about it yet.","image":"images/60466.jpg","legoUrl":"https://www.lego.com/en-us/product/yellow-bulldozer-60466"},
     {"id":"60467","pieces":793,"name":"Heavy-Duty Recovery Tow Truck with Crane","theme":"City","status":"reserved","wishlistGift":"planned","price":89.99,"notes":"Gramma/Grampa bought it for Christmas 2026. Already bought; E doesn't know about it yet.","image":"images/60467.jpg","legoUrl":"https://www.lego.com/en-us/product/heavy-duty-recovery-tow-truck-with-crane-60467"},
     {"id":"60493","pieces":508,"name":"F1 Display Truck with Audi F1 Race Car","theme":"City","status":"ideas","price":44.99,"notes":"On E's Christmas 2026 wish list. Steve saw it in store in November 2026; LEGO lists the set as retiring soon.","image":"images/60493.jpg","legoUrl":"https://www.lego.com/en-us/product/f1-display-truck-with-audi-f1-race-car-60493"},
-    {"id":"60456","pieces":264,"name":"Police Boat Chase","theme":"City","status":"ideas","price":34.99,"notes":"E has a similar firefighting boat (Fire Rescue Boat 60373, already owned).","image":"images/60456.jpg","legoUrl":"https://www.lego.com/en-us/product/police-boat-chase-60456"}
+    {"id":"60456","pieces":264,"name":"Police Boat Chase","theme":"City","status":"ideas","price":34.99,"notes":"E has a similar firefighting boat (Fire Rescue Boat 60373, already owned).","image":"images/60456.jpg","legoUrl":"https://www.lego.com/en-us/product/police-boat-chase-60456"},
+    {"id":"60367","pieces":913,"name":"Passenger Airplane","theme":"City","status":"ideas","price":119.99,"notes":"Listed under sets E might want. 20% off at Target on 2026-11-15 ($95.99, was $119.99).","image":"images/60367.jpg","legoUrl":"https://www.lego.com/en-us/product/passenger-airplane-60367"}
   ]
 };
 

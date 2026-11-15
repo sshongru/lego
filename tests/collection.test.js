@@ -12,9 +12,9 @@ const collectionFilters = getCollectionFilters(data);
 
 test("collection is valid and source entries are deduplicated by set number", () => {
   assert.equal(validateCollection(data), data);
-  assert.equal(data.sets.length, 54);
+  assert.equal(data.sets.length, 55);
   assert.deepEqual(Object.fromEntries(Object.keys(statuses).map(status => [status, selectSets(data.sets, { status }).length])), {
-    owned: 30, ideas: 17, reserved: 7,
+    owned: 30, ideas: 18, reserved: 7,
   });
   assert.equal(data.sets.find(set => set.id === "60450").quantity, 2);
   assert.equal(data.sets.find(set => set.id === "42235").name, "Ferrari 488 Pista Car");
@@ -283,7 +283,7 @@ test("wishlist configuration can be rebranded independently of its theme and mem
     const ids = selectSets(copy.sets, { status: "wishlist" }).map(set => set.id);
     assert.ok(ids.includes("60451"));
     assert.ok(!ids.includes("60498"));
-    assert.equal(selectSets(copy.sets, { status: "ideas" }).length, 17);
+    assert.equal(selectSets(copy.sets, { status: "ideas" }).length, 18);
   }
   for (const wishlist of [undefined, {}, { ...data.wishlist, label: "" }, { ...data.wishlist, description: 123 }, { ...data.wishlist, theme: "easter" }]) {
     assert.throws(() => validateCollection({ ...data, wishlist }), /wishlist configuration/);
