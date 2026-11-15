@@ -31,7 +31,7 @@ test("collection is valid and source entries are deduplicated by set number", ()
   assert.equal(data.sets.find(set => set.id === "60373").status, "owned");
   assert.equal(data.sets.find(set => set.id === "60373").notes, "Birthday gift from Jordan and Cole.");
   assert.equal(data.sets.find(set => set.id === "60508").status, "reserved");
-  assert.equal(data.sets.find(set => set.id === "60508").notes, "Baba will be getting this for E for Thanksgiving.");
+  assert.equal(data.sets.find(set => set.id === "60508").notes, "Steve bought this for E for Thanksgiving.");
   assert.equal(data.sets.find(set => set.id === "60499").status, "owned");
   assert.equal(data.sets.find(set => set.id === "60499").notes, "Mama/Baba gave this to E for his fifth birthday.");
   assert.equal(data.sets.find(set => set.id === "60490").status, "reserved");
@@ -53,7 +53,7 @@ test("the newer main F1 Display Truck entry remains an idea outside the curated 
   assert.equal(set.wishlistGift, undefined);
   assert.equal(selectSets(data.sets, { status: normalizeFilter("suspected"), query: "60493" })[0], set);
   assert.equal(selectSets(data.sets, { status: "wishlist", query: "60493" }).length, 0);
-  assert.equal(data.updatedAt, "2026-11-13");
+  assert.equal(data.updatedAt, "2026-11-15");
 });
 
 test("each set has a real, local product image", async () => {
@@ -350,3 +350,4 @@ test("page uses ordered classic scripts and no runtime data fetch", async () => 
   }
   assert.doesNotMatch(html, /href="\.\/"/);
 });
+

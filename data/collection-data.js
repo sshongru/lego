@@ -1,7 +1,7 @@
 globalThis.LEGO_COLLECTION = {
   "title": "E's LEGO collection",
   "sourceUrl": "https://docs.google.com/document/d/1iOm-WL2mod_ddafMe6jMYb0pIGvxAL3Q3hconsDV9oM/edit",
-  "updatedAt": "2026-11-13",
+  "updatedAt": "2026-11-15",
   "currency": "USD",
   "wishlist": {
     "label": "Christmas Wishlist",
@@ -23,7 +23,7 @@ globalThis.LEGO_COLLECTION = {
     {"id":"60488","pieces":216,"name":"Fries Food Truck","theme":"City","status":"ideas","notes":"Listed under sets E might want.","image":"images/60488.jpg","legoUrl":"https://www.lego.com/en-us/product/fries-food-truck-60488"},
     {"id":"60503","pieces":551,"name":"Coast Guard Helicopter","theme":"City","status":"owned","notes":"Birthday gift from Ama.","image":"images/60503.jpg","legoUrl":"https://www.lego.com/en-us/product/coast-guard-helicopter-60503"},
     {"id":"60502","pieces":887,"name":"Airport with Airplane","theme":"City","status":"ideas","notes":"Listed under sets E might want.","image":"images/60502.jpg","legoUrl":"https://www.lego.com/en-us/product/airport-with-airplane-60502"},
-    {"id":"60508","pieces":1313,"name":"Police Train Heist","theme":"City","status":"reserved","notes":"Baba will be getting this for E for Thanksgiving.","image":"images/60508.jpg","legoUrl":"https://www.lego.com/en-us/product/police-train-heist-60508"},
+    {"id":"60508","pieces":1313,"name":"Police Train Heist","theme":"City","status":"reserved","notes":"Steve bought this for E for Thanksgiving.","image":"images/60508.jpg","legoUrl":"https://www.lego.com/en-us/product/police-train-heist-60508"},
     {"id":"40468","pieces":124,"name":"Yellow Taxi","theme":"LEGO","status":"ideas","price":9.99,"notes":"Listed under sets E might want. Different from City Yellow Taxi 60487.","image":"images/40468.jpg","legoUrl":"https://www.lego.com/en-us/product/yellow-taxi-40468"},
     {"id":"60205","pieces":20,"name":"Tracks","theme":"City","status":"ideas","price":19.99,"notes":"Steve's birthday gift idea; also listed under sets E might want.","image":"images/60205.jpg","legoUrl":"https://www.lego.com/en-us/product/tracks-60205"},
     {"id":"60238","pieces":8,"name":"Switch Tracks","theme":"City","status":"ideas","price":15.99,"notes":"Steve's birthday gift idea; also listed under sets E might want.","image":"images/60238.jpg","legoUrl":"https://www.lego.com/en-us/product/switch-tracks-60238"},
@@ -65,3 +65,4 @@ globalThis.LEGO_COLLECTION = {
     {"id":"60456","pieces":264,"name":"Police Boat Chase","theme":"City","status":"ideas","price":34.99,"notes":"E has a similar firefighting boat (Fire Rescue Boat 60373, already owned).","image":"images/60456.jpg","legoUrl":"https://www.lego.com/en-us/product/police-boat-chase-60456"}
   ]
 };
+
