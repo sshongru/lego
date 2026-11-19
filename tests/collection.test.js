@@ -14,7 +14,7 @@ test("collection is valid and source entries are deduplicated by set number", ()
   assert.equal(validateCollection(data), data);
   assert.equal(data.sets.length, 56);
   assert.deepEqual(Object.fromEntries(Object.keys(statuses).map(status => [status, selectSets(data.sets, { status }).length])), {
-    owned: 30, ideas: 19, reserved: 7,
+    owned: 30, ideas: 18, reserved: 8,
   });
   assert.equal(data.sets.find(set => set.id === "60450").quantity, 2);
   assert.equal(data.sets.find(set => set.id === "42235").name, "Ferrari 488 Pista Car");
@@ -43,15 +43,15 @@ test("collection is valid and source entries are deduplicated by set number", ()
   assert.equal(data.sets.find(set => set.id === "60490").price, 27.99);
 });
 
-test("the F1 Display Truck entry is an idea on the curated wishlist as a suggestion", () => {
+test("the F1 Display Truck entry is a reserved set on the curated wishlist as a suggestion", () => {
   const set = data.sets.find(set => set.id === "60493");
   assert.equal(set.name, "F1 Display Truck with Audi F1 Race Car");
-  assert.equal(set.status, "ideas");
+  assert.equal(set.status, "reserved");
   assert.equal(set.price, 44.99);
   assert.equal(set.pieces, 508);
-  assert.equal(set.notes, "On E's Christmas 2026 wish list. Steve saw it in store in November 2026; LEGO lists the set as retiring soon.");
+  assert.equal(set.notes, "Steve bought it at Target for $35 in November 2026. Might be given as a Christmas gift or held for later. LEGO lists the set as retiring soon.");
   assert.equal(set.wishlistGift, "suggestion");
-  assert.equal(selectSets(data.sets, { status: normalizeFilter("suspected"), query: "60493" })[0], set);
+  assert.equal(selectSets(data.sets, { status: "reserved", query: "60493" })[0], set);
   assert.equal(selectSets(data.sets, { status: "wishlist", query: "60493" }).length, 1);
   assert.equal(data.updatedAt, "2026-11-18");
 });
@@ -239,13 +239,13 @@ test("app renders the wishlist by default and preserves explicit URL filters on 
         assert.deepEqual(cards.map(card => card.querySelector(".wishlist-gift").textContent), [
           "Planned",
           "Idea",
-          "Idea",
+          "Already Bought",
           "Already Bought",
           "Idea",
           "Already Bought",
           "Idea",
         ]);
-        assert.deepEqual(cards.map(card => card.querySelector(".wishlist-gift").classList.values.has("is-bought")), [false, false, false, true, false, true, false]);
+        assert.deepEqual(cards.map(card => card.querySelector(".wishlist-gift").classList.values.has("is-bought")), [false, false, true, true, false, true, false]);
         assert.match(cards[6].querySelector("target").attributes["aria-label"], /^View Tractor/);
       }
       buttons.find(button => button.dataset.status === "owned").events.click();
@@ -286,7 +286,7 @@ test("wishlist configuration can be rebranded independently of its theme and mem
     const ids = selectSets(copy.sets, { status: "wishlist" }).map(set => set.id);
     assert.ok(ids.includes("60451"));
     assert.ok(!ids.includes("60498"));
-    assert.equal(selectSets(copy.sets, { status: "ideas" }).length, 19);
+    assert.equal(selectSets(copy.sets, { status: "ideas" }).length, 18);
   }
   for (const wishlist of [undefined, {}, { ...data.wishlist, label: "" }, { ...data.wishlist, description: 123 }, { ...data.wishlist, theme: "easter" }]) {
     assert.throws(() => validateCollection({ ...data, wishlist }), /wishlist configuration/);
