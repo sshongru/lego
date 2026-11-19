@@ -139,7 +139,7 @@ test("category filters default to Christmas Wishlist without an all-sets view", 
 });
 
 test("Christmas Wishlist includes only current tagged gifts and suggestions", () => {
-  assert.deepEqual(selectSets(data.sets, { status: "wishlist", sort: "number" }).map(set => set.id), ["60467", "60490", "60493", "60494", "60498"]);
+  assert.deepEqual(selectSets(data.sets, { status: "wishlist", sort: "number" }).map(set => set.id), ["60451", "60467", "60490", "60493", "60494", "60498"]);
   assert.deepEqual(selectSets(data.sets, { status: "wishlist", query: "Gramma" }).map(set => set.id).sort(), ["60467", "60490"]);
   assert.equal(selectSets(data.sets, { status: "wishlist", query: "tractor" })[0].id, "60498");
   assert.equal(selectSets(data.sets, { status: "wishlist", query: "Thanksgiving" }).length, 0);
@@ -213,7 +213,7 @@ test("app renders the wishlist by default and preserves explicit URL filters on 
       assert.equal(buttons[0].querySelector("[data-filter-label]").textContent, wishlist.label);
       assert.equal(buttons.find(button => button.dataset.status === "ideas").querySelector("[data-filter-label]").textContent, "Ideas");
       assert.equal(page.querySelector("#set-grid").cards.length, selectSets(data.sets, { status: selected }).length);
-      assert.equal(counts.find(count => count.dataset.count === "wishlist").textContent, 5);
+      assert.equal(counts.find(count => count.dataset.count === "wishlist").textContent, 6);
       for (const card of page.querySelector("#set-grid").cards) {
         const meta = card.querySelector(".set-meta").textContent;
         const set = data.sets.find(set => meta.includes(`#${set.id} /`));
@@ -239,12 +239,13 @@ test("app renders the wishlist by default and preserves explicit URL filters on 
         assert.deepEqual(cards.map(card => card.querySelector(".wishlist-gift").textContent), [
           "Planned",
           "Idea",
+          "Idea",
           "Already Bought",
           "Already Bought",
           "Idea",
         ]);
-        assert.deepEqual(cards.map(card => card.querySelector(".wishlist-gift").classList.values.has("is-bought")), [false, false, true, true, false]);
-        assert.match(cards[4].querySelector("target").attributes["aria-label"], /^View Tractor/);
+        assert.deepEqual(cards.map(card => card.querySelector(".wishlist-gift").classList.values.has("is-bought")), [false, false, false, true, true, false]);
+        assert.match(cards[5].querySelector("target").attributes["aria-label"], /^View Tractor/);
       }
       buttons.find(button => button.dataset.status === "owned").events.click();
       assert.equal(page.classList.values.has("christmas-theme"), false);
@@ -259,7 +260,7 @@ test("app renders the wishlist by default and preserves explicit URL filters on 
       page.querySelector("#search").events.input();
       assert.equal(page.querySelector("#empty-state").hidden, false);
       page.querySelector("#empty-reset").events.click();
-      assert.equal(page.querySelector("#set-grid").cards.length, 5);
+      assert.equal(page.querySelector("#set-grid").cards.length, 6);
       page.querySelector("#snow-toggle").events.click();
       assert.equal(page.classList.values.has("snow-paused"), true);
       assert.equal(page.querySelector("#snow-toggle").attributes["aria-pressed"], "true");
@@ -278,7 +279,7 @@ test("wishlist configuration can be rebranded independently of its theme and mem
     copy.wishlist = { label: `${occasion} Wishlist`, description: `${occasion} gifts for E.`, theme: "default" };
     assert.equal(validateCollection(copy), copy);
     assert.equal(getCollectionFilters(copy).wishlist.label, `${occasion} Wishlist`);
-    assert.equal(selectSets(copy.sets, { status: "wishlist" }).length, 5);
+    assert.equal(selectSets(copy.sets, { status: "wishlist" }).length, 6);
     delete copy.sets.find(set => set.id === "60498").wishlistGift;
     copy.sets.find(set => set.id === "60451").wishlistGift = "suggestion";
     const ids = selectSets(copy.sets, { status: "wishlist" }).map(set => set.id);
