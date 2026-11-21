@@ -1,7 +1,7 @@
 globalThis.LEGO_COLLECTION = {
   "title": "E's LEGO collection",
   "sourceUrl": "https://docs.google.com/document/d/1iOm-WL2mod_ddafMe6jMYb0pIGvxAL3Q3hconsDV9oM/edit",
-  "updatedAt": "2026-11-19",
+  "updatedAt": "2026-11-20",
   "currency": "USD",
   "wishlist": {
     "label": "Christmas Wishlist",
@@ -64,7 +64,8 @@ globalThis.LEGO_COLLECTION = {
     {"id":"60493","pieces":508,"name":"F1 Display Truck with Audi F1 Race Car","theme":"City","status":"reserved","wishlistGift":"suggestion","price":44.99,"notes":"Steve bought it at Target for $35 in November 2026. Might be given as a Christmas gift or held for later. LEGO lists the set as retiring soon.","image":"images/60493.jpg","legoUrl":"https://www.lego.com/en-us/product/f1-display-truck-with-audi-f1-race-car-60493"},
     {"id":"60456","pieces":264,"name":"Police Boat Chase","theme":"City","status":"reserved","wishlistGift":"planned","price":34.99,"notes":"Andy and Sarah bought this for E for Christmas 2026. Already bought; E doesn't know about it yet. E has a similar firefighting boat (Fire Rescue Boat 60373, already owned).","image":"images/60456.jpg","legoUrl":"https://www.lego.com/en-us/product/police-boat-chase-60456"},
     {"id":"60367","pieces":913,"name":"Passenger Airplane","theme":"City","status":"ideas","price":119.99,"notes":"Listed under sets E might want. 20% off at Target on 2026-11-15 ($95.99, was $119.99).","image":"images/60367.jpg","legoUrl":"https://www.lego.com/en-us/product/passenger-airplane-60367"},
-    {"id":"60443","pieces":322,"name":"F1 Pit Stop & Pit Crew with Ferrari Car","theme":"City","status":"ideas","price":29.99,"notes":"Listed under sets E might want. 20% off at Walmart on 2026-11-16 ($23.99, was $29.99). Pairs with the F1 Display Truck (60493) already on E's Christmas wish list.","image":"images/60443.jpg","legoUrl":"https://www.lego.com/en-us/product/f1-pit-stop-pit-crew-with-ferrari-car-60443"}
+    {"id":"60443","pieces":322,"name":"F1 Pit Stop & Pit Crew with Ferrari Car","theme":"City","status":"ideas","price":29.99,"notes":"Listed under sets E might want. 20% off at Walmart on 2026-11-16 ($23.99, was $29.99). Pairs with the F1 Display Truck (60493) already on E's Christmas wish list.","image":"images/60443.jpg","legoUrl":"https://www.lego.com/en-us/product/f1-pit-stop-pit-crew-with-ferrari-car-60443"},
+    {"id":"60304","pieces":112,"name":"Road Plates","theme":"City","status":"ideas","wishlistGift":"suggestion","price":19.99,"notes":"Christmas 2026 gift idea; listed under sets E might want.","image":"images/60304.jpg","legoUrl":"https://www.lego.com/en-us/product/road-plates-60304"}
   ]
 };
 

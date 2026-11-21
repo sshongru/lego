@@ -12,9 +12,9 @@ const collectionFilters = getCollectionFilters(data);
 
 test("collection is valid and source entries are deduplicated by set number", () => {
   assert.equal(validateCollection(data), data);
-  assert.equal(data.sets.length, 56);
+  assert.equal(data.sets.length, 57);
   assert.deepEqual(Object.fromEntries(Object.keys(statuses).map(status => [status, selectSets(data.sets, { status }).length])), {
-    owned: 30, ideas: 17, reserved: 9,
+    owned: 30, ideas: 18, reserved: 9,
   });
   assert.equal(data.sets.find(set => set.id === "60450").quantity, 2);
   assert.equal(data.sets.find(set => set.id === "42235").name, "Ferrari 488 Pista Car");
@@ -53,7 +53,7 @@ test("the F1 Display Truck entry is a reserved set on the curated wishlist as a 
   assert.equal(set.wishlistGift, "suggestion");
   assert.equal(selectSets(data.sets, { status: "reserved", query: "60493" })[0], set);
   assert.equal(selectSets(data.sets, { status: "wishlist", query: "60493" }).length, 1);
-  assert.equal(data.updatedAt, "2026-11-19");
+  assert.equal(data.updatedAt, "2026-11-20");
 });
 
 test("each set has a real, local product image", async () => {
@@ -139,7 +139,7 @@ test("category filters default to Christmas Wishlist without an all-sets view", 
 });
 
 test("Christmas Wishlist includes only current tagged gifts and suggestions", () => {
-  assert.deepEqual(selectSets(data.sets, { status: "wishlist", sort: "number" }).map(set => set.id), ["60451", "60456", "60467", "60490", "60493", "60494", "60498"]);
+  assert.deepEqual(selectSets(data.sets, { status: "wishlist", sort: "number" }).map(set => set.id), ["60304", "60451", "60456", "60467", "60490", "60493", "60494", "60498"]);
   assert.deepEqual(selectSets(data.sets, { status: "wishlist", query: "Gramma" }).map(set => set.id).sort(), ["60467", "60490"]);
   assert.equal(selectSets(data.sets, { status: "wishlist", query: "tractor" })[0].id, "60498");
   assert.equal(selectSets(data.sets, { status: "wishlist", query: "Thanksgiving" }).length, 0);
@@ -213,7 +213,7 @@ test("app renders the wishlist by default and preserves explicit URL filters on 
       assert.equal(buttons[0].querySelector("[data-filter-label]").textContent, wishlist.label);
       assert.equal(buttons.find(button => button.dataset.status === "ideas").querySelector("[data-filter-label]").textContent, "Ideas");
       assert.equal(page.querySelector("#set-grid").cards.length, selectSets(data.sets, { status: selected }).length);
-      assert.equal(counts.find(count => count.dataset.count === "wishlist").textContent, 7);
+      assert.equal(counts.find(count => count.dataset.count === "wishlist").textContent, 8);
       for (const card of page.querySelector("#set-grid").cards) {
         const meta = card.querySelector(".set-meta").textContent;
         const set = data.sets.find(set => meta.includes(`#${set.id} /`));
@@ -242,11 +242,12 @@ test("app renders the wishlist by default and preserves explicit URL filters on 
           "Already Bought",
           "Already Bought",
           "Already Bought",
+          "Idea",
           "Already Bought",
           "Idea",
         ]);
-        assert.deepEqual(cards.map(card => card.querySelector(".wishlist-gift").classList.values.has("is-bought")), [false, false, true, true, true, true, false]);
-        assert.match(cards[6].querySelector("target").attributes["aria-label"], /^View Tractor/);
+        assert.deepEqual(cards.map(card => card.querySelector(".wishlist-gift").classList.values.has("is-bought")), [false, false, true, true, true, false, true, false]);
+        assert.match(cards[7].querySelector("target").attributes["aria-label"], /^View Tractor/);
       }
       buttons.find(button => button.dataset.status === "owned").events.click();
       assert.equal(page.classList.values.has("christmas-theme"), false);
@@ -261,7 +262,7 @@ test("app renders the wishlist by default and preserves explicit URL filters on 
       page.querySelector("#search").events.input();
       assert.equal(page.querySelector("#empty-state").hidden, false);
       page.querySelector("#empty-reset").events.click();
-      assert.equal(page.querySelector("#set-grid").cards.length, 7);
+      assert.equal(page.querySelector("#set-grid").cards.length, 8);
       page.querySelector("#snow-toggle").events.click();
       assert.equal(page.classList.values.has("snow-paused"), true);
       assert.equal(page.querySelector("#snow-toggle").attributes["aria-pressed"], "true");
@@ -280,13 +281,13 @@ test("wishlist configuration can be rebranded independently of its theme and mem
     copy.wishlist = { label: `${occasion} Wishlist`, description: `${occasion} gifts for E.`, theme: "default" };
     assert.equal(validateCollection(copy), copy);
     assert.equal(getCollectionFilters(copy).wishlist.label, `${occasion} Wishlist`);
-    assert.equal(selectSets(copy.sets, { status: "wishlist" }).length, 7);
+    assert.equal(selectSets(copy.sets, { status: "wishlist" }).length, 8);
     delete copy.sets.find(set => set.id === "60498").wishlistGift;
     copy.sets.find(set => set.id === "60451").wishlistGift = "suggestion";
     const ids = selectSets(copy.sets, { status: "wishlist" }).map(set => set.id);
     assert.ok(ids.includes("60451"));
     assert.ok(!ids.includes("60498"));
-    assert.equal(selectSets(copy.sets, { status: "ideas" }).length, 17);
+    assert.equal(selectSets(copy.sets, { status: "ideas" }).length, 18);
   }
   for (const wishlist of [undefined, {}, { ...data.wishlist, label: "" }, { ...data.wishlist, description: 123 }, { ...data.wishlist, theme: "easter" }]) {
     assert.throws(() => validateCollection({ ...data, wishlist }), /wishlist configuration/);
