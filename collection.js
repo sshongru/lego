@@ -37,6 +37,7 @@ globalThis.LegoCollection = (() => {
           (set.quantity !== undefined && (!Number.isInteger(set.quantity) || set.quantity < 1)) ||
           (set.notes !== undefined && typeof set.notes !== "string") ||
           (set.wishlistGift !== undefined && (!["planned", "suggestion"].includes(set.wishlistGift) || set.status === "owned")) ||
+          (set.retiring !== undefined && !["soon", "retired"].includes(set.retiring)) ||
           (set.targetUrl !== undefined && (typeof set.targetUrl !== "string" || !/^https:\/\/www\.target\.com\/p\/[^?#]+\/-\/A-\d+(?:[?#].*)?$/.test(set.targetUrl)))) {
         throw new Error(`Invalid or duplicate set in collection data: ${set.id ?? "unknown"}.`);
       }

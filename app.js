@@ -81,6 +81,10 @@ function render() {
       : set.wishlistGift === "planned"
         ? "Planned"
         : "Idea";
+    const retiring = card.querySelector(".retiring-badge");
+    retiring.hidden = !set.retiring;
+    retiring.classList.toggle("is-retired", set.retiring === "retired");
+    retiring.textContent = !set.retiring ? "" : set.retiring === "retired" ? "Retired" : "Retiring soon";
     const price = card.querySelector(".set-price");
     price.textContent = set.price === undefined ? "Price not listed" : money.format(set.price);
     price.classList.toggle("price-unknown", set.price === undefined);

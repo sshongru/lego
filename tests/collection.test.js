@@ -53,7 +53,7 @@ test("the F1 Display Truck entry is a reserved set on the curated wishlist as a 
   assert.equal(set.wishlistGift, "suggestion");
   assert.equal(selectSets(data.sets, { status: "reserved", query: "60493" })[0], set);
   assert.equal(selectSets(data.sets, { status: "wishlist", query: "60493" }).length, 1);
-  assert.equal(data.updatedAt, "2026-11-20");
+  assert.equal(data.updatedAt, "2026-11-25");
 });
 
 test("each set has a real, local product image", async () => {
@@ -89,11 +89,22 @@ test("invalid data fails explicitly", () => {
   copy.sets.push(copy.sets[0]);
   assert.throws(() => validateCollection(copy), /duplicate/);
   for (const change of [{ status: "maybe" }, { price: -1 }, { quantity: 0 }, { pieces: 0 }, { pieces: -1 }, { pieces: 1.5 }, { pieces: "204" }, { image: "../private.jpg" }, { legoUrl: "javascript:alert(1)" },
-    { wishlistGift: "maybe" }, { wishlistGift: "planned" }, { targetUrl: "javascript:alert(1)" }, { targetUrl: "https://www.target.com.evil.example/p/tractor/-/A-94756903" }]) {
+    { wishlistGift: "maybe" }, { wishlistGift: "planned" }, { retiring: "maybe" }, { targetUrl: "javascript:alert(1)" }, { targetUrl: "https://www.target.com.evil.example/p/tractor/-/A-94756903" }]) {
     const invalid = structuredClone(data);
     Object.assign(invalid.sets[0], change);
     assert.throws(() => validateCollection(invalid), /Invalid/);
   }
+});
+
+test("retiring badges cover every set retiring soon or retired", () => {
+  assert.deepEqual(data.sets.filter(set => set.retiring === "soon").map(set => set.id).sort(),
+    ["40468", "42198", "60316", "60337", "60404", "60407", "60423", "60465", "60466", "60490", "60493", "60495"]);
+  assert.deepEqual(data.sets.filter(set => set.retiring === "retired").map(set => set.id).sort(),
+    ["10789", "31160", "60181", "60249", "60284", "60325", "60369", "60374", "60386", "60401", "60408", "60409", "60413", "60418", "60420", "60435", "60450", "60453", "60467"]);
+  assert.equal(data.sets.filter(set => set.retiring !== undefined).length, 31);
+  const valid = structuredClone(data);
+  valid.sets.find(set => set.id === "60304").retiring = "soon";
+  assert.equal(validateCollection(valid), valid);
 });
 
 test("retailer links use the LEGO product page and set-specific retailer searches", () => {
@@ -225,6 +236,10 @@ test("app renders the wishlist by default and preserves explicit URL filters on 
         const bought = card.querySelector(".wishlist-gift").textContent === "Already Bought";
         const unavailable = selected === "wishlist" && bought;
         assert.equal(card.querySelector(".set-card").classList.values.has("is-unavailable"), unavailable);
+        const retiring = card.querySelector(".retiring-badge");
+        assert.equal(retiring.hidden, !set.retiring);
+        assert.equal(retiring.textContent, !set.retiring ? "" : set.retiring === "retired" ? "Retired" : "Retiring soon");
+        assert.equal(retiring.classList.values.has("is-retired"), set.retiring === "retired");
         for (const link of card.querySelectorAll("a")) {
           assert.equal(link.attributes["aria-disabled"] === "true", unavailable);
           assert.equal(typeof link.href === "string", !unavailable);
@@ -247,6 +262,16 @@ test("app renders the wishlist by default and preserves explicit URL filters on 
           "Idea",
         ]);
         assert.deepEqual(cards.map(card => card.querySelector(".wishlist-gift").classList.values.has("is-bought")), [false, false, true, true, true, false, true, false]);
+        assert.deepEqual(cards.map(card => card.querySelector(".retiring-badge").textContent), [
+          "",
+          "",
+          "Retiring soon",
+          "Retired",
+          "",
+          "",
+          "Retiring soon",
+          "",
+        ]);
         assert.match(cards[7].querySelector("target").attributes["aria-label"], /^View Tractor/);
       }
       buttons.find(button => button.dataset.status === "owned").events.click();
@@ -322,7 +347,10 @@ test("snowfall is decorative and the original-list header link is removed", asyn
 
 test("Christmas gift labels appear at the top of the card, before its image", async () => {
   const html = await readFile(new URL("index.html", root), "utf8");
-  assert.match(html, /<article class="set-card">\s*<p class="wishlist-gift" hidden><\/p>\s*<div class="card-image">/);
+  assert.match(html, /<article class="set-card">\s*<p class="wishlist-gift" hidden><\/p>\s*<p class="retiring-badge" hidden><\/p>\s*<div class="card-image">/);
+  const css = await readFile(new URL("styles.css", root), "utf8");
+  assert.match(css, /\.retiring-badge\s*\{/);
+  assert.match(css, /\.retiring-badge\.is-retired\s*\{/);
 });
 
 test("retailer links use local Amazon and Target logos without a duplicate LEGO link", async () => {

@@ -133,6 +133,8 @@ body {
 .card-body { padding: 16px 15px 0; }
 .wishlist-gift { margin: 0; padding: 7px 15px; background: #fff9df; color: #69551b; font-size: 11px; font-weight: 650; line-height: 1.6; }
 .wishlist-gift.is-bought { background: #164c3e; color: #fff; }
+.retiring-badge { margin: 0; padding: 5px 15px; background: #faf3dc; color: #7a6a2f; font-size: 10px; font-weight: 550; line-height: 1.5; letter-spacing: .4px; }
+.retiring-badge.is-retired { background: #eeeee6; color: #8a9086; }
 .set-meta { color: #536e90; font-size: 9px; font-weight: 650; letter-spacing: .8px; }
 .set-card h3 { font-size: 14px; font-weight: 800; line-height: 1.45; }
 .set-price { font-size: 14px; font-weight: 750; }
