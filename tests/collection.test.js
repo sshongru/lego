@@ -241,9 +241,9 @@ test("app renders the wishlist by default and preserves explicit URL filters on 
         assert.equal(retiring.textContent, !set.retiring ? "" : set.retiring === "retired" ? "Retired" : "Retiring soon");
         assert.equal(retiring.classList.values.has("is-retired"), set.retiring === "retired");
         for (const link of card.querySelectorAll("a")) {
-          assert.equal(link.attributes["aria-disabled"] === "true", unavailable);
-          assert.equal(typeof link.href === "string", !unavailable);
-          if (unavailable) assert.equal(link.tabIndex, -1);
+          assert.equal(link.attributes["aria-disabled"], undefined);
+          assert.equal(typeof link.href, "string");
+          assert.notEqual(link.tabIndex, -1);
         }
         for (const link of card.querySelectorAll("[data-retailer]")) {
           assert.match(link.attributes["aria-label"], /at (Amazon|Target) \(opens in a new tab\)$/);

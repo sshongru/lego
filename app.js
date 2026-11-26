@@ -98,14 +98,6 @@ function render() {
       quantity.textContent = `x${set.quantity}`;
       quantity.setAttribute("aria-label", `${set.quantity} copies owned`);
     }
-    if (unavailable) {
-      for (const link of card.querySelectorAll("a")) {
-        link.removeAttribute("href");
-        link.setAttribute("aria-disabled", "true");
-        link.tabIndex = -1;
-        link.title = "Already bought; no need to purchase again.";
-      }
-    }
     fragment.append(card);
   }
   grid.replaceChildren(fragment);

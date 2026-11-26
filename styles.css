@@ -163,17 +163,6 @@ body {
 .retailer-link img { display: block; width: 14px; height: 14px; object-fit: contain; }
 .retailer-link[data-retailer="amazon"] img { width: 14px; height: 18px; }
 .retailer-link:hover { background: #edf3fb; }
-.retailer-link[aria-disabled="true"] img { filter: grayscale(1); opacity: .5; }
-.retailer-link[aria-disabled="true"]:hover { background: transparent; }
-.retailer-link[aria-disabled="true"]::after {
-  content: "";
-  position: absolute;
-  left: 3px;
-  right: 3px;
-  top: 50%;
-  border-top: 1px solid #526c64;
-  transform: rotate(-35deg);
-}
 .card-bottom { gap: 7px; padding-bottom: 14px; flex-wrap: nowrap; }
 .set-notes { border-top: 2px dashed #dce7f5; padding-top: 12px; }
 .set-notes p { font-size: 11px; }
@@ -352,7 +341,6 @@ footer { color: #526b88; border: 0; font-size: 10px; }
 .is-unavailable .card-image { background: #f3f5f4; }
 .is-unavailable .card-image img { filter: grayscale(1); opacity: .55; }
 .is-unavailable .set-title-link { color: #526c64; text-decoration: line-through; text-decoration-thickness: 1px; }
-.is-unavailable a { cursor: default; }
 .is-unavailable .retailer-link, .is-unavailable .retailer-link:hover {
   color: #526c64;
   text-decoration: line-through;
